@@ -10,7 +10,11 @@ const index = async (req, res, next) => {
 }
 
 const find = async (req, res, next) => {
+  const result = await getOneNotes(req)
 
+  res.status(StatusCodes.OK).json({
+    data: result
+  })
 }
 
 const create = async (req, res, next) => {
@@ -27,7 +31,16 @@ const update = async (req, res, next) => {
 }
 
 const destroy = async (req, res, next) => {
+  try {
+    const result = await deleteNotes(req)
 
+    res.status(StatusCodes.OK).json({
+      message: 'delete successfully',
+      data: result
+    })
+  } catch (error) {
+    next(error)
+  }
 }
 
 module.exports = {

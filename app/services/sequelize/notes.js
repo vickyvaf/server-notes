@@ -2,7 +2,7 @@ const Notes = require("../../api/v1/notes/model");
 
 const getAllNotes = async () => {
   const result = await Notes.findAll({
-    attributes: ['title', 'notes']
+    attributes: ['id', 'title', 'notes']
   })
 
   return result
@@ -13,7 +13,7 @@ const getOneNotes = async (req) => {
 
   const result = await Notes.findOne({
     where: { id: id },
-    attributes: ['title', 'notes']
+    attributes: ['id', 'title', 'notes']
   })
 
   return result
