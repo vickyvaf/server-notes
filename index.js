@@ -14,9 +14,10 @@ sequelize.sync().then(() => {
   console.log('database ready...')
 })
 
-const v1 = '/api/v1'
+const v1 = '/api/v1/cms'
 
 const usersRoutes = require('./app/api/v1/users/router')
+const notesRoutes = require('./app/api/v1/notes/router')
 
 app.get('/', (_, res) => {
   res.status(200).json({
@@ -25,5 +26,6 @@ app.get('/', (_, res) => {
 })
 
 app.use(v1, usersRoutes)
+app.use(v1, notesRoutes)
 
 app.listen(port)
