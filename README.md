@@ -107,3 +107,36 @@ Response body <br />
     "data": 1
 }
 ```
+
+<br />
+
+### Register
+Method POST
+<br />
+`http://[host]:[port]/api/v1/cms/users/register` 
+<br />
+<br />
+Request body <br />
+```
+{
+    "name": "Budi Setiawan",
+    "username": "budisetiawan",
+    "email": "budisetiawan@gmail.com",
+    "password": "budisss1123"
+}
+```
+Response body <br />
+```
+{
+    "message": "user created",
+    "users": {
+        "id": 38,
+        "name": "Budi Setiawan",
+        "username": "budisetiawan",
+        "email": "budisetiawan@gmail.com",
+        "password": "$2b$10$LLSVyLqbsLlhtQcNue8BU.Z4k/4.trpNJnCYgLaIybklFPL/VYLKi",
+        "updatedAt": "2022-11-18T15:38:04.990Z",
+        "createdAt": "2022-11-18T15:38:04.990Z"
+    }
+}
+```
