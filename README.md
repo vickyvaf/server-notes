@@ -143,7 +143,7 @@ Response body <br />
 
 <br />
 
-### Register
+### Login
 Method POST
 <br />
 `http://[host]:[port]/api/v1/cms/users/login` 
