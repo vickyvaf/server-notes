@@ -8,7 +8,7 @@
 |            | `/api/v1/cms/notes/:id` | PUT | Update one note by id | Yes |
 |            | `/api/v1/cms/notes/:id` | DELETE | Delete one note by id | Yes |
 | Register   | 
-|            | `/api/v1/cms/users` | POST | Create user | Yes |
+|            | `/api/v1/cms/users/register` | POST | Create user | Yes |
 | Login      | 
 |            | `/api/v1/cms/users/login` | POST | Check user | Yes |
 
