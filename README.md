@@ -140,3 +140,26 @@ Response body <br />
     }
 }
 ```
+
+<br />
+
+### Register
+Method POST
+<br />
+`http://[host]:[port]/api/v1/cms/users/login` 
+<br />
+<br />
+Request body <br />
+```
+{
+    "username": "budisetiawan",
+    "password": "budisss1123"
+}
+```
+Response body <br />
+```
+{
+    "message": "Login successfully",
+    "status": 1
+}
+```
