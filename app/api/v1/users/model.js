@@ -1,25 +1,39 @@
-const { Model, DataTypes } = require('sequelize')
-const sequelize = require('../../../db')
+const { Model, DataTypes } = require("sequelize");
+const sequelize = require("../../../db");
+const Notes = require("../notes/model");
 
-class User extends Model { }
+class Users extends Model {}
 
-User.init(
+Users.init(
   {
-    nip: {
-      type: DataTypes.INTEGER,
-      unique: true,
+    id: {
+      type: DataTypes.BIGINT,
+      primaryKey: true,
     },
-    nama: {
-      type: DataTypes.STRING
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    username: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false
     },
     password: {
-      type: DataTypes.STRING
-    }
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
   },
   {
     sequelize,
-    modelName: 'Users'
+    modelName: "Users",
   }
-)
+);
 
-module.exports = User
+Users.hasMany(Notes, { foreignKey: "userId" });
+Notes.belongsTo(Users, { foreignKey: "userId" });
+
+module.exports = Users;

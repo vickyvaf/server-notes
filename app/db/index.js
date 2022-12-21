@@ -1,4 +1,4 @@
-const { Sequelize } = require('sequelize')
+const { Sequelize } = require("sequelize");
 
 const sequelize = new Sequelize(
   process.env.DB_NAME,
@@ -6,8 +6,15 @@ const sequelize = new Sequelize(
   process.env.DB_PASSWORD,
   {
     dialect: process.env.DB,
-    host: process.env.HOST
+    host: process.env.HOST,
   }
-)
+);
 
-module.exports = sequelize
+// sequelize
+//   .sync()
+//   .then(() => {
+//     console.log("database ready...");
+//   })
+//   .catch((err) => console.log(err.message));
+
+module.exports = sequelize;
