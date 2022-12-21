@@ -1,3 +1,6 @@
+## ERD
+More Details ERD on [DrawSQL - Notes](https://drawsql.app/teams/vaf/diagrams/notes)
+
 ## Speck API
 | Name | Routes | HTTP | Description |
 |------|--------|------|-------------|
@@ -7,10 +10,6 @@
 |            | `/api/v1/cms/notes/:id` | GET | Get one note by id | Yes |
 |            | `/api/v1/cms/notes/:id` | PUT | Update one note by id | Yes |
 |            | `/api/v1/cms/notes/:id` | DELETE | Delete one note by id | Yes |
-| Register   | 
-|            | `/api/v1/cms/users/register` | POST | Create user | Yes |
-| Login      | 
-|            | `/api/v1/cms/users/login` | POST | Check user | Yes |
 
 ### Get all notes
 Method GET
@@ -82,7 +81,7 @@ Request body <br />
 ```
 {
     "title": "Wash my car",
-    "notes": "after buy noodle at market I will wash my car"
+    "notes": "after buy noodle at market I will wash car"
 }
 ```
 Response body <br />
@@ -105,61 +104,5 @@ Response body <br />
 {
     "message": "delete successfully",
     "data": 1
-}
-```
-
-<br />
-
-### Register
-Method POST
-<br />
-`http://[host]:[port]/api/v1/cms/users/register` 
-<br />
-<br />
-Request body <br />
-```
-{
-    "name": "Budi Setiawan",
-    "username": "budisetiawan",
-    "email": "budisetiawan@gmail.com",
-    "password": "budisss1123"
-}
-```
-Response body <br />
-```
-{
-    "message": "user created",
-    "users": {
-        "id": 38,
-        "name": "Budi Setiawan",
-        "username": "budisetiawan",
-        "email": "budisetiawan@gmail.com",
-        "password": "$2b$10$LLSVyLqbsLlhtQcNue8BU.Z4k/4.trpNJnCYgLaIybklFPL/VYLKi",
-        "updatedAt": "2022-11-18T15:38:04.990Z",
-        "createdAt": "2022-11-18T15:38:04.990Z"
-    }
-}
-```
-
-<br />
-
-### Login
-Method POST
-<br />
-`http://[host]:[port]/api/v1/cms/users/login` 
-<br />
-<br />
-Request body <br />
-```
-{
-    "username": "budisetiawan",
-    "password": "budisss1123"
-}
-```
-Response body <br />
-```
-{
-    "message": "Login successfully",
-    "status": 1
 }
 ```
