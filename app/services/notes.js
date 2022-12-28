@@ -1,14 +1,10 @@
 const Notes = require("../api/v1/notes/model");
-const { StatusCodes } = require("http-status-codes");
 const jwt = require("jsonwebtoken");
-const responseData = require("../helpers/responseData");
+const checkTokenId = require("../helpers/checkTokenId");
 require("dotenv").config();
 
 const getAllNotes = async (req) => {
-  const authHeader = req.headers.authorization;
-  const token = authHeader?.split(" ")[1];
-  const secretKey = process.env.JWT_TOKEN;
-  const { id } = jwt.verify(token, secretKey);
+  const id = checkTokenId(req);
 
   const result = await Notes.findAll({
     where: { userId: id },
@@ -31,10 +27,7 @@ const getOneNotes = async (req) => {
 const createNotes = async (req) => {
   const { title, notes } = req.body;
 
-  const authHeader = req.headers.authorization;
-  const token = authHeader?.split(" ")[1];
-  const secretKey = process.env.JWT_TOKEN;
-  const { id } = jwt.verify(token, secretKey);
+  const id = checkTokenId(req);
 
   const result = await Notes.create({
     userId: id,
