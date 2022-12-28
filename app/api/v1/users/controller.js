@@ -4,7 +4,7 @@ const {
   createUsers,
   updateUsers,
   deleteUsers,
-} = require("../../../services/sequelize/users");
+} = require("../../../services/users");
 const { StatusCodes } = require("http-status-codes");
 
 const index = async (req, res, next) => {

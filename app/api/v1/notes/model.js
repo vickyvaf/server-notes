@@ -1,6 +1,5 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../../../db");
-const Users = require("../users/model");
 
 class Notes extends Model {}
 
@@ -12,12 +11,15 @@ Notes.init(
     },
     userId: {
       type: DataTypes.BIGINT,
+      references: { model: "users", key: "id" },
     },
     title: {
       type: DataTypes.STRING,
+      allowNull: false,
     },
     notes: {
       type: DataTypes.STRING,
+      allowNull: false,
     },
   },
   {
@@ -25,8 +27,5 @@ Notes.init(
     modelName: "Notes",
   }
 );
-
-// Notes.hasOne(Users, { foreignKey: "id" });
-// Notes.belongsTo(Users, { foreignKey: "userId" });
 
 module.exports = Notes;

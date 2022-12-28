@@ -1,5 +1,5 @@
-const Users = require("../../api/v1/users/model");
-const Notes = require("../../api/v1/notes/model");
+const Users = require("../api/v1/users/model");
+const Notes = require("../api/v1/notes/model");
 const bcrypt = require("bcrypt");
 
 const getAllUsers = async () => {

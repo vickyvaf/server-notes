@@ -4,16 +4,15 @@ const {
   getAllNotes,
   getOneNotes,
   updateNotes,
-} = require("../../../services/sequelize/notes");
+} = require("../../../services/notes");
+const responseData = require("../../../helpers/responseData");
 const { StatusCodes } = require("http-status-codes");
 
 const index = async (req, res, next) => {
   try {
     const result = await getAllNotes(req);
 
-    res.status(StatusCodes.OK).json({
-      notes: result,
-    });
+    return res.send(responseData(StatusCodes.OK, "OK", null, result));
   } catch (error) {
     next(error);
   }
@@ -23,9 +22,7 @@ const find = async (req, res, next) => {
   try {
     const result = await getOneNotes(req);
 
-    res.status(StatusCodes.OK).json({
-      notes: result,
-    });
+    return res.send(responseData(StatusCodes.OK, "OK", null, result));
   } catch (error) {
     next(error);
   }
@@ -35,10 +32,7 @@ const create = async (req, res, next) => {
   try {
     const result = await createNotes(req);
 
-    res.status(StatusCodes.CREATED).json({
-      message: "notes created",
-      notes: result,
-    });
+    return res.send(responseData(StatusCodes.CREATED, "created", null, result));
   } catch (error) {
     next(error);
   }
@@ -50,10 +44,7 @@ const destroy = async (req, res, next) => {
   try {
     const result = await deleteNotes(req);
 
-    res.status(StatusCodes.OK).json({
-      message: "notes deleted",
-      notes: result,
-    });
+    return res.send(responseData(StatusCodes.OK, "deleted", null, result));
   } catch (error) {
     next(error);
   }

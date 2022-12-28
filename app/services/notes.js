@@ -1,12 +1,17 @@
-const Notes = require("../../api/v1/notes/model");
-const Users = require("../../api/v1/users/model");
+const Notes = require("../api/v1/notes/model");
+const { StatusCodes } = require("http-status-codes");
+const jwt = require("jsonwebtoken");
+const responseData = require("../helpers/responseData");
+require("dotenv").config();
 
 const getAllNotes = async (req) => {
-  const { id } = req.params;
+  const authHeader = req.headers.authorization;
+  const token = authHeader?.split(" ")[1];
+  const secretKey = process.env.JWT_TOKEN;
+  const { id } = jwt.verify(token, secretKey);
 
   const result = await Notes.findAll({
     where: { userId: id },
-    include: [{ model: Users }],
   });
 
   return result;
