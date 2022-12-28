@@ -12,6 +12,7 @@ const getAllNotes = async (req) => {
 
   const result = await Notes.findAll({
     where: { userId: id },
+    order: [["id", "DESC"]],
   });
 
   return result;
@@ -28,10 +29,15 @@ const getOneNotes = async (req) => {
 };
 
 const createNotes = async (req) => {
-  const { userId, title, notes } = req.body;
+  const { title, notes } = req.body;
+
+  const authHeader = req.headers.authorization;
+  const token = authHeader?.split(" ")[1];
+  const secretKey = process.env.JWT_TOKEN;
+  const { id } = jwt.verify(token, secretKey);
 
   const result = await Notes.create({
-    userId,
+    userId: id,
     title,
     notes,
   });
