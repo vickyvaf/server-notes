@@ -10,11 +10,11 @@ const sequelize = new Sequelize(
   }
 );
 
-// sequelize
-//   .sync()
-//   .then(() => {
-//     console.log("database ready...");
-//   })
-//   .catch((err) => console.log(err.message));
+sequelize
+  .sync()
+  .then(() => {
+    console.log("database ready...");
+  })
+  .catch((err) => console.log(err.message));
 
 module.exports = sequelize;
